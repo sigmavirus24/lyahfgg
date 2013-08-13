@@ -19,9 +19,17 @@ gcd' x y =
     else
         gcd' y (x `mod` y)
 
+-- MUCH BETTER
+gcd'' x y
+    | x == 0 = y
+    | x == 1 || y == 1 = 1
+    | y == 0 = x
+    | x < y = gcd'' x (y `mod` x)
+    | otherwise = gcd'' y (x `mod` y)
+
 -- Find the number of trailing zeros of a factorial
 zeros_of_a_factorial x =
     if 0 <= x && x < 5 then
         0
     else
-        sum [x `div` (5^y) | y <- [1..x]]
+        sum [z | y <- [1..x], let z = x `div` (5^y), z > 0]
