@@ -24,8 +24,8 @@ gcd'' x y
     | x == 0 = y
     | x == 1 || y == 1 = 1
     | y == 0 = x
-    | x < y = gcd'' x (y `mod` x)
-    | otherwise = gcd'' y (x `mod` y)
+    | x < y = gcd'' x $ y `mod` x
+    | otherwise = gcd'' y $ x `mod` y
 
 -- Find the number of trailing zeros of a factorial
 zeros_of_a_factorial x =
